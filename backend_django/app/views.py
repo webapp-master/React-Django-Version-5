@@ -21,7 +21,7 @@ def getProduct(request,pk):
     for i in products:
         if i['_id']==pk:
             product=i
-            break
+            
         return Response(product)
 
 
