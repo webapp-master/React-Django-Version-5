@@ -5,6 +5,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 # Create your views here.
+
+
 @api_view(['GET'])
 def getRoutes(request):
     return Response('Hello')
@@ -16,12 +18,13 @@ def getProducts(request):
 
 
 @api_view(['GET'])
-def getProduct(request,pk):
-    product=None
+def getProduct(request, pk):
+    product = None
     for i in products:
-        if i['_id']==pk:
-            product=i
-            
+        if i['_id'] == pk:
+            product = i
+            break
+    if product:
         return Response(product)
-
-
+    else:
+        return Response({'detail': 'Product not found'})
